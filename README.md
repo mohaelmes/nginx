@@ -9,7 +9,7 @@ Asegúrate de tener instalado Nginx en tu servidor antes de comenzar.
 ```bash
 sudo apt update
 sudo apt install nginx
-
+```
 
 
 
@@ -40,10 +40,11 @@ Agrega la siguiente configuración dentro del bloque server en tu archivo de con
 Verifica que la sintaxis de la configuración sea correcta:
 ```bash
 sudo nginx -t
+```
 
 Si todo está bien, reinicia Nginx para aplicar los cambios:
 ```bash
 sudo systemctl restart nginx
-
+```
 
 Con esto, Nginx debería estar actuando como un proxy inverso y dirigiendo todas las solicitudes entrantes desde example.com al servidor backend que se ejecuta en http://localhost:8000.
