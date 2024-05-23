@@ -14,7 +14,8 @@ sudo apt install nginx
 
 
 
-Configuración
+## Configuración
+
 **1. Editar el archivo de configuración de Nginx:**
 
 Abre el archivo de configuración de Nginx. Por lo general, se encuentra en /etc/nginx/nginx.conf o en /etc/nginx/sites-available/default.
