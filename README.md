@@ -13,6 +13,7 @@ sudo apt install nginx
 
 
 
+
 Configuración
 **1. Editar el archivo de configuración de Nginx:**
 
