@@ -10,6 +10,9 @@ Asegúrate de tener instalado Nginx en tu servidor antes de comenzar.
 sudo apt update
 sudo apt install nginx
 
+
+
+
 Configuración
 **1. Editar el archivo de configuración de Nginx:**
 
