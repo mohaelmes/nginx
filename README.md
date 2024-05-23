@@ -36,7 +36,49 @@ Agrega la siguiente configuración dentro del bloque server en tu archivo de con
 
 - **proxy_set_header**: Esta directiva de Nginx configura las cabeceras que se enviarán al servidor backend. Esto es importante para mantener la información correcta de la solicitud original, como la dirección IP del cliente (`X-Real-IP`), la dirección IP del proxy (`X-Forwarded-For`), entre otras.
 
-3. Verifica la sintaxis y reinicia Nginx:
+Lo modificamos a nuestra manera: 
+```bash
+worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+        listen       80;
+        server_name  mohamedelmes.com;
+
+        location / {
+            root "C:/Users/amine/OneDrive/Escritorio/nginx"; 
+            index index.html;
+            try_files $uri $uri/ /index.html;
+        }
+
+        location /proxy/ {
+            proxy_pass http://127.0.0.1:8080;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_redirect off;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+}
+```
+
+**3. Verifica la sintaxis y reinicia Nginx:**
 
 Verifica que la sintaxis de la configuración sea correcta:
 ```bash
